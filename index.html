@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryan's Assistant</title>
+</head>
+<body>
+  <h1 style="text-align:center; font-family:sans-serif; margin-top:30px;">
+    Welcome to Ryan's Interactive Resume Chatbot
+  </h1>
+  <p style="text-align:center; font-family:sans-serif;">
+    Use the chat in the bottom-right corner to learn more about Ryan's skills, experience, certifications, and education.
+  </p>
+
+  <!-- Dialogflow Messenger Embed -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="Ryan's-Assistant"
+    agent-id="c893a66a-9095-4674-b773-8040a39b4cc7"
+    language-code="en"
+  ></df-messenger>
+</body>
+</html>
