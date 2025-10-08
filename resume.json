@@ -1,0 +1,72 @@
+{
+  "name": "Ryan Hillman",
+  "contact": {
+    "phone": "704-787-6680",
+    "email": "ryanhillman0@gmail.com",
+    "location": "Charlotte, NC"
+  },
+  "skills": {
+    "highlights": [
+      "Cloud Engineering",
+      "Generative AI",
+      "Full Stack Development",
+      "Data Analytics and Visualization",
+      "various Programming Languages"
+    ],
+    "programming_languages": [
+      "Java",
+      "Python",
+      "SQL",
+      "Vue.js",
+      "R"
+    ]
+  },
+  "certifications": [
+    "Amazon Web Services Certified Cloud Practitioner",
+    "Microsoft Certified: Azure Fundamentals"
+  ],
+  "experience": [
+    {
+      "company": "Accenture",
+      "years": "September 2021 – October 2025",
+      "role": "Consultant",
+      "roles": [
+        {
+          "role": "Java Application Developer",
+          "client": "New York City Employees Retirement System (NYCERS)",
+          "client_year": "2022"
+        },
+        {
+          "role": "Pegasystems Development and Support",
+          "client": "Bank of America",
+          "client_year": "2023"
+        }
+      ]
+    },
+    {
+      "company": "Freshpire Inc.",
+      "role": "Technology Consultant",
+      "years": "December 2020 – January 2021"
+    },
+    {
+      "company": "CliftonLarsonAllen LLP",
+      "role": "Tax Accounting Intern",
+      "years": "December 2016 – April 2017"
+    },
+    {
+      "company": "CPI Security",
+      "role": "Inventory Intern",
+      "years": "May 2016 – September 2016"
+    }
+  ],
+  "education": {
+    "school": "The University of North Carolina at Charlotte",
+    "degree": "Bachelor of Science in Computer Science",
+    "concentration": "Software, Systems, & Networks",
+    "option": "Business",
+    "year": "August 2021"
+  },
+  "awards": [
+    "Presidential Service Award - completed over 100 hours of community service within 1 year"
+  ]
+}
