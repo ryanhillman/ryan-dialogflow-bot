@@ -9,6 +9,9 @@ This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud R
 
 ---
 
+## 📷 Screenshot
+![App Screenshot](./screenshot.png)
+
 ## 💡 Features
 - **Dialogflow ES Chatbot**: Handles intents like skills, programming languages, experience, certifications, education, and awards.  
 - **Custom Webhook (Python/Flask on Cloud Run)**: Dynamically pulls information from my structured resume JSON stored in Google Cloud Storage.  
@@ -45,9 +48,7 @@ This project showcases my ability to:
 ---
 
 ## 📬 Contact
-If you’d like to connect, feel free to reach out via the contact form on the site or through my LinkedIn.  
-
----
+If you’d like to connect, feel free to reach out via the contact form on the site or through my LinkedIn.
 
 ### License
 This project is for personal portfolio purposes. Please do not use without permission.
