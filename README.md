@@ -54,6 +54,3 @@ This project showcases my ability to:
 ## 📬 Contact
 If you’d like to connect, feel free to reach out via the contact form on the site or through my LinkedIn.
 
-## 📷 Screenshot
-![App Screenshot](./screenshot.png)
-
