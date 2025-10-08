@@ -52,5 +52,6 @@ If you’d like to connect, feel free to reach out via the contact form on the s
 ### License
 This project is for personal portfolio purposes. Please do not use without permission.
 
-## Screenshot
+## 📷 Screenshot
+![App Screenshot](./screenshot.png)
 
