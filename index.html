@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryan's Interactive Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: 
+        linear-gradient(135deg, rgba(240,244,248,0.9), rgba(217,226,236,0.9)),
+        url("https://tse2.mm.bing.net/th/id/OIP.IUTeKu4-BmBcF97mqoPbiwHaHa?pid=Api") no-repeat center center;
+      background-size: cover;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2.2rem;
+      color: #1a365d;
+    }
+    p {
+      max-width: 650px;
+      margin: 20px auto;
+      font-size: 1.1rem;
+      color: #4a5568;
+    }
+    .buttons {
+      margin: 25px 0;
+    }
+    .buttons a {
+      text-decoration: none;
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      background-color: #2b6cb0;
+      color: white;
+      font-weight: 600;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+    .buttons a:hover {
+      background-color: #2c5282;
+    }
+    form {
+      margin: 30px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 90%;
+      text-align: left;
+    }
+    form h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #1a365d;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+    button {
+      background-color: #2b6cb0;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #2c5282;
+    }
+    #thank-you {
+      display: none;
+      margin: 20px auto;
+      font-size: 1.1rem;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    .footer {
+      margin-top: auto;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #718096;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ryan's Interactive Resume Chatbot</h1>
+  <p>
+    Welcome! Use the chat in the bottom-right corner to explore Ryan’s professional experience.
+  </p>
+
+  <div class="buttons">
+    <a href="https://www.linkedin.com/in/ryan-h-7614a2128/" target="_blank">View LinkedIn</a>
+    <a href="https://storage.googleapis.com/ryan-resume-bucket/resume.pdf" target="_blank">View Resume (PDF)</a>
+  </div>
+
+  <!-- Contact Form -->
+  <form id="contact-form" action="https://formspree.io/f/xldpwjdz" method="POST">
+    <h2>Contact Ryan</h2>
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="_replyto" placeholder="Your email" required>
+    <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <!-- Thank You Message -->
+  <div id="thank-you">✅ Thank you! Your message has been sent.</div>
+
+  <!-- Dialogflow Messenger -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="Ryan's-Assistant"
+    agent-id="c893a66a-9095-4674-b773-8040a39b4cc7"
+    language-code="en"
+  ></df-messenger>
+
+  <div class="footer">Built with Google Cloud Dialogflow</div>
+
+  <script>
+    // Thank-you handling
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('thank-you').style.display = 'block';
+      } else {
+        alert("Oops! There was a problem sending your message.");
+      }
+    });
+  </script>
+</body>
+</html>
