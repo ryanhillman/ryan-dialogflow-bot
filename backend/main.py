@@ -3,101 +3,136 @@ import requests
 
 app = Flask(__name__)
 
+# Replace with your exact public GCS URL
 RESUME_URL = "https://storage.googleapis.com/ryan-resume-bucket/resume.json"
 
-@app.route('/webhook', methods=['POST'])
+def load_resume():
+    try:
+        r = requests.get(RESUME_URL, timeout=5)
+        r.raise_for_status()
+        return r.json()
+    except Exception:
+        return {}
+
+@app.route("/webhook", methods=["POST"])
 def webhook():
     req = request.get_json(silent=True, force=True)
-    intent = req.get('queryResult', {}).get('intent', {}).get('displayName')
+    intent = (req.get("queryResult", {}).get("intent", {}) or {}).get("displayName", "")
+    data = load_resume()
 
-    try:
-        data = requests.get(RESUME_URL).json()
-    except Exception as e:
-        return jsonify({"fulfillmentText": f"Error loading resume: {str(e)}"})
-
-    response_text = ""
-
-    # --- Welcome ---
-    if intent == "WELCOME":
-        response_text = (
-            "Hello! 👋 This is Ryan's interactive resume assistant. "
-            "You can ask me about Ryan's skills, programming languages, "
-            "experience, certifications, education, contact information, or awards."
-        )
-
-    # --- Skills (summary) ---
-    elif intent == "Skills":
-        skills = data.get("skills", {}).get("highlights", [])
-        if skills:
-            response_text = "Ryan's key skills include: " + ", ".join(skills) + "."
-        else:
-            response_text = "Ryan's skill information is currently unavailable."
-
-    # --- Programming Languages ---
-    elif intent == "ProgrammingLanguages":
-        langs = data.get("skills", {}).get("programming_languages", [])
-        if langs:
-            response_text = "Ryan is experienced with the following programming languages: " + ", ".join(langs) + "."
-        else:
-            response_text = "Ryan's programming language information is currently unavailable."
-
-    # --- Certifications ---
-    elif intent == "Certifications":
-        certs = data.get("certifications", [])
-        response_text = "Ryan has earned certifications such as: " + "; ".join(certs) + "."
-
-    # --- General Experience ---
-    elif intent == "Experience":
-        exp = data.get("experience", [])
-        job_texts = []
-        for job in exp:
-            company = job.get("company", "")
-            years = job.get("years", "")
+    # EXPERIENCE (no dates; dashed items)
+    if intent == "Experience":
+        exps = data.get("experience", [])
+        if not exps:
+            return jsonify({"fulfillmentText": "No experience data found."})
+        lines = [
+            "Here is Ryan's professional experience",
+            "",
+        ]
+        for job in exps:
             role = job.get("role", "")
-            job_texts.append(f"{role} at {company} ({years})")
-        response_text = "Here is Ryan's professional experience: " + ", ".join(job_texts) + "."
+            company = job.get("company", "")
+            if role and company:
+                lines.append(f"- {role} at {company}")
+        return jsonify({"fulfillmentText": "\n".join(lines)})
 
-    # --- Accenture-specific Experience ---
-    elif intent == "AccentureExperience":
-        acc = next((j for j in data.get("experience", []) if j.get("company") == "Accenture"), None)
-        if acc:
-            roles = []
-            for r in acc.get("roles", []):
-                role = r.get("role", "")
-                client = r.get("client", "")
-                year = r.get("client_year", "")
-                roles.append(f"{role} at {client} ({year})")
-            response_text = f"During his time at Accenture ({acc.get('years')}), Ryan contributed as: " + ", ".join(roles) + "."
-        else:
-            response_text = "Ryan’s Accenture experience details could not be found."
+    # ACCENTURE overview (offer sub-roles)
+    if intent == "Accenture":
+        return jsonify({"fulfillmentText":
+            "Ryan held two roles while at Accenture\n\n"
+            "- Java Application Development with NYCERS (New York City Employees Retirement System)\n"
+            "- Pegasystems Support and Development with BoA (Bank of America)\n\n"
+            "- Would you like to hear more about either?"
+        })
 
-    # --- Education ---
-    elif intent == "Education":
+    # NYCERS details (dashed bullets)
+    if intent in ["NYCERS Details", "Java Application Development Details", "New York City Employee Retirement System Details"]:
+        accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
+        bullets = accenture.get("details", {}).get("Java Application Development", [])
+        if not bullets:
+            return jsonify({"fulfillmentText": "No NYCERS details found."})
+        text = "Java Application Developer for NYCERS\n\n" + "\n".join(f"- {b}" for b in bullets)
+        return jsonify({"fulfillmentText": text})
+
+    # BoA / Pegasystems details (dashed bullets)
+    if intent in ["BoA Details", "Bank of America Details", "Pegasystems Support and Development Details"]:
+        accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
+        bullets = accenture.get("details", {}).get("Pegasystems Support and Development", [])
+        if not bullets:
+            return jsonify({"fulfillmentText": "No Bank of America details found."})
+        text = "Pegasystems Support and Development for Bank of America\n\n" + "\n".join(f"- {b}" for b in bullets)
+        return jsonify({"fulfillmentText": text})
+
+    # SKILLS overview (guide to subcategories)
+    if intent == "Skills":
+        return jsonify({"fulfillmentText":
+            "Ryan has experience with Programming Languages, Frameworks, Platforms, and Tools. Which would you like to know more about?"
+        })
+
+    # SKILLS sub-intents (dashed bullets)
+    if intent == "Languages":
+        items = (data.get("skills", {}).get("Languages") or [])
+        if not items:
+            return jsonify({"fulfillmentText": "No languages found."})
+        return jsonify({"fulfillmentText": "Ryan is skilled in\n\n" + "\n".join(f"- {x}" for x in items)})
+
+    if intent == "Frameworks":
+        items = (data.get("skills", {}).get("Frameworks") or [])
+        if not items:
+            return jsonify({"fulfillmentText": "No frameworks found."})
+        return jsonify({"fulfillmentText": "Ryan has experience with\n\n" + "\n".join(f"- {x}" for x in items)})
+
+    if intent == "Platforms":
+        items = (data.get("skills", {}).get("Platforms") or [])
+        if not items:
+            return jsonify({"fulfillmentText": "No platforms found."})
+        return jsonify({"fulfillmentText": "Ryan has worked with\n\n" + "\n".join(f"- {x}" for x in items)})
+
+    if intent == "Tools":
+        items = (data.get("skills", {}).get("Tools") or [])
+        if not items:
+            return jsonify({"fulfillmentText": "No tools found."})
+        return jsonify({"fulfillmentText": "Ryan is familiar with\n\n" + "\n".join(f"- {x}" for x in items)})
+
+    # EDUCATION (natural sentences; no dashes)
+    if intent == "Education":
         edu = data.get("education", {})
-        response_text = f"Ryan completed his {edu.get('degree', '')} in {edu.get('concentration', '')} with a {edu.get('option', '')} option at {edu.get('school', '')}, graduating in {edu.get('year', '')}."
+        school = edu.get("school", "")
+        degree = edu.get("degree", "")
+        grad = edu.get("graduation", "")
+        text = f"Ryan earned his degree at {school}. It was a {degree}. He graduated in {grad}."
+        return jsonify({"fulfillmentText": text})
 
-    # --- Awards ---
-    elif intent == "Awards":
+    # CERTIFICATIONS (dashed bullets)
+    if intent == "Certifications":
+        certs = data.get("certifications", [])
+        if not certs:
+            return jsonify({"fulfillmentText": "No certifications found."})
+        return jsonify({"fulfillmentText": "Ryan holds the following certifications\n\n" + "\n".join(f"- {c}" for c in certs)})
+
+    # AWARDS (dashed bullets)
+    if intent == "Awards":
         awards = data.get("awards", [])
-        response_text = "Ryan has been recognized with awards such as: " + "; ".join(awards) + "."
+        # allow either array of strings or array of {title, description}
+        if isinstance(awards, list) and awards and isinstance(awards[0], dict):
+            formatted = []
+            for a in awards:
+                title = a.get("title", "")
+                desc = a.get("description", "")
+                if title and desc:
+                    formatted.append(f"- {title} - {desc}")
+                elif title:
+                    formatted.append(f"- {title}")
+                elif desc:
+                    formatted.append(f"- {desc}")
+            return jsonify({"fulfillmentText": "Ryan has received the following awards\n\n" + "\n".join(formatted) if formatted else "No awards found."})
+        elif isinstance(awards, list):
+            return jsonify({"fulfillmentText": "Ryan has received the following awards\n\n" + "\n".join(f"- {a}" for a in awards) if awards else "No awards found."})
+        else:
+            return jsonify({"fulfillmentText": "No awards found."})
 
-    # --- Contact ---
-    elif intent == "Contact":
-        contact = data.get("contact", {})
-        phone = contact.get("phone", "")
-        email = contact.get("email", "")
-        location = contact.get("location", "")
-        response_text = f"Here is Ryan's contact information: Phone: {phone}, Email: {email}, Location: {location}."
+    # Fallback
+    return jsonify({"fulfillmentText": "I can help with Ryan's experience, skills, education, certifications, and awards. Please ask about one!"})
 
-    # --- Fallback ---
-    else:
-        response_text = (
-            "Sorry, I didn’t quite catch that. "
-            "Try asking about Ryan's skills, programming languages, "
-            "experience, certifications, education, contact information, or awards."
-        )
-
-    return jsonify({"fulfillmentText": response_text})
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
