@@ -35,6 +35,11 @@
       text-decoration: none;
       margin: 5px;
       display: inline-block;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn:hover {
+      background: #0072ff;
+      color: white;
     }
     .card {
       background: white;
@@ -56,6 +61,9 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
+    form textarea {
+      resize: none; /* disables expand/drag */
+    }
     form button {
       background: #0072ff;
       color: white;
@@ -64,16 +72,17 @@
       border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s;
     }
-    /* Force Dialogflow messenger inline */
-    df-messenger {
-      width: 100%;
-      height: 500px;
-      max-height: 500px;
+    form button:hover {
+      background: #005bb5;
     }
-    df-messenger iframe {
-      width: 100% !important;
-      height: 100% !important;
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      color: white;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -81,20 +90,9 @@
   <header>
     <h1>Ryan Hillman</h1>
     <p>Cloud Developer | Application Engineer | Consultant</p>
-    <a class="btn" href="resume.pdf" target="_blank">View Resume</a>
-    <a class="btn" href="https://www.linkedin.com/in/ryanhillman0/" target="_blank">LinkedIn</a>
+    <a class="btn" href="https://storage.googleapis.com/ryan-resume-bucket/resume.pdf" target="_blank">View Resume</a>
+    <a class="btn" href="https://www.linkedin.com/in/ryan-h-7614a2128/" target="_blank">LinkedIn</a>
   </header>
-
-  <!-- Chat Card -->
-  <div class="card">
-    <h2>Chat with Ryan’s Assistant</h2>
-    <df-messenger
-      intent="WELCOME"
-      chat-title="Ryan's-Assistant"
-      agent-id="c893a66a-9095-4674-b773-8040a39b4cc7"
-      language-code="en">
-    </df-messenger>
-  </div>
 
   <!-- Contact Form Card -->
   <div class="card">
@@ -107,7 +105,19 @@
     </form>
   </div>
 
-  <!-- Dialogflow Script -->
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Ryan Hillman. All rights reserved.</p>
+  </footer>
+
+  <!-- Dialogflow Messenger Script -->
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="Ryan's-Assistant"
+    agent-id="c893a66a-9095-4674-b773-8040a39b4cc7"
+    language-code="en">
+  </df-messenger>
 </body>
 </html>
+
