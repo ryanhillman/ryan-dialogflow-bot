@@ -1,4 +1,4 @@
-# Ryan's Interactive Resume Chatbot 🤖
+# 🤖 Ryan's Interactive Resume Chatbot
 
 Welcome to my interactive resume project!  
 This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud Run**, and **GitHub Pages** to create a chatbot that allows visitors to explore my professional background in a conversational way.
