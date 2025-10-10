@@ -1,72 +1,70 @@
 {
-  "name": "Ryan Hillman",
-  "contact": {
-    "phone": "704-787-6680",
-    "email": "ryanhillman0@gmail.com",
-    "location": "Charlotte, NC"
-  },
-  "skills": {
-    "highlights": [
-      "Cloud Engineering",
-      "Generative AI",
-      "Full Stack Development",
-      "Data Analytics and Visualization",
-      "various Programming Languages"
-    ],
-    "programming_languages": [
-      "Java",
-      "Python",
-      "SQL",
-      "Vue.js",
-      "R"
-    ]
-  },
-  "certifications": [
-    "Amazon Web Services Certified Cloud Practitioner",
-    "Microsoft Certified: Azure Fundamentals"
-  ],
   "experience": [
     {
       "company": "Accenture",
-      "years": "September 2021 – October 2025",
       "role": "Consultant",
-      "roles": [
-        {
-          "role": "Java Application Developer",
-          "client": "New York City Employees Retirement System (NYCERS)",
-          "client_year": "2022"
-        },
-        {
-          "role": "Pegasystems Development and Support",
-          "client": "Bank of America",
-          "client_year": "2023"
-        }
-      ]
+      "years": "September 2021 - October 2025",
+      "details": {
+        "Java Application Development": [
+          "Designed full-stack integration solutions to enable cross-application functionality",
+          "Evaluated workloads for cloud migration paths to IaaS or PaaS platforms",
+          "Upgraded software to comply with architecture assurance requirements"
+        ],
+        "Pegasystems Support and Development": [
+          "Implemented Generative AI to automate recovery processes",
+          "Diagnosed simple to complex issues as second-level support resource",
+          "Collaborated in scrum meetings to discuss objectives and process resolution updates"
+        ]
+      }
     },
     {
-      "company": "Freshpire Inc.",
+      "company": "Freshpire Inc",
       "role": "Technology Consultant",
-      "years": "December 2020 – January 2021"
+      "years": "December 2020 - January 2021",
+      "details": [
+        "Analyzed monthly delivery budgets for patterns or discrepancies",
+        "Connected local farms to food distribution companies for increased market visibility",
+        "Processed data records to transition towards an advantageous online system"
+      ]
     },
     {
       "company": "CliftonLarsonAllen LLP",
       "role": "Tax Accounting Intern",
-      "years": "December 2016 – April 2017"
+      "years": "December 2016 - April 2017",
+      "details": [
+        "Prepared 1040, 1120, and state property tax returns for individual clients and small businesses",
+        "Provided customer support and answered questions about federal, state, and local governance",
+        "Aided with collecting and uploading financial forms"
+      ]
     },
     {
       "company": "CPI Security",
       "role": "Inventory Intern",
-      "years": "May 2016 – September 2016"
+      "years": "May 2016 - September 2016",
+      "details": [
+        "Assisted with keeping weekly inventory and reporting totals to management",
+        "Tested parts for defects and arranged returns to manufacturers",
+        "Distributed security system parts to service employees based on daily needs"
+      ]
     }
   ],
+  "skills": {
+    "Languages": ["Java", "Python", "JavaScript", "SQL", "R"],
+    "Frameworks": ["Vue.js", "Flask", "Dialogflow", "Spring Boot"],
+    "Platforms": ["Google Cloud", "Microsoft Azure", "AWS", "Pegasystems"],
+    "Tools": ["Git/GitHub", "PostgreSQL", "Auth0", "Tableau", "Airtable"]
+  },
   "education": {
     "school": "The University of North Carolina at Charlotte",
-    "degree": "Bachelor of Science in Computer Science",
-    "concentration": "Software, Systems, & Networks",
-    "option": "Business",
-    "year": "August 2021"
+    "degree": "Bachelor of Science in Computer Science - Software, Systems & Networks (Business Option)",
+    "graduation": "August 2021"
   },
+  "certifications": [
+    "AWS Certified Cloud Practitioner",
+    "Microsoft Certified: Azure Fundamentals"
+  ],
   "awards": [
     "Presidential Service Award - completed over 100 hours of community service within 1 year"
   ]
 }
+
