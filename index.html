@@ -3,156 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ryan's Interactive Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>Ryan Hillman - Portfolio</title>
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
       margin: 0;
-      padding: 0;
-      background: 
-        linear-gradient(135deg, rgba(240,244,248,0.9), rgba(217,226,236,0.9)),
-        url("https://tse2.mm.bing.net/th/id/OIP.IUTeKu4-BmBcF97mqoPbiwHaHa?pid=Api") no-repeat center center;
-      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fb;
       color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
+    }
+
+    /* Hero section */
+    header {
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      color: white;
       text-align: center;
+      padding: 60px 20px;
     }
-    h1 {
-      margin-top: 40px;
-      font-size: 2.2rem;
-      color: #1a365d;
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
     }
-    p {
-      max-width: 650px;
-      margin: 20px auto;
-      font-size: 1.1rem;
-      color: #4a5568;
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
     }
+
+    /* Buttons */
     .buttons {
-      margin: 25px 0;
+      margin: 20px 0;
     }
     .buttons a {
       text-decoration: none;
+      background: white;
+      color: #0077b6;
+      font-weight: bold;
+      padding: 12px 25px;
       margin: 10px;
-      padding: 12px 20px;
-      font-size: 1rem;
-      border-radius: 6px;
-      background-color: #2b6cb0;
-      color: white;
-      font-weight: 600;
-      transition: background 0.3s;
-      display: inline-block;
+      border-radius: 30px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
     .buttons a:hover {
-      background-color: #2c5282;
+      background: #0077b6;
+      color: white;
     }
-    form {
+
+    /* Chatbot */
+    .chatbot {
+      background: white;
       margin: 30px auto;
       padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 500px;
-      width: 90%;
-      text-align: left;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    form h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      color: #1a365d;
+    .chatbot h2 {
+      margin-top: 0;
+      color: #0077b6;
     }
-    input, textarea, button {
+
+    /* Contact form */
+    .contact {
+      background: white;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .contact h2 {
+      margin-top: 0;
+      color: #0077b6;
+    }
+    .contact input, .contact textarea {
       width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
+      padding: 12px;
+      margin: 8px 0;
       border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-family: 'Roboto', sans-serif;
+      border-radius: 8px;
     }
-    button {
-      background-color: #2b6cb0;
+    .contact button {
+      background: #0077b6;
       color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background-color: #2c5282;
-    }
-    #thank-you {
-      display: none;
-      margin: 20px auto;
-      font-size: 1.1rem;
-      color: green;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
       font-weight: bold;
-      text-align: center;
+      cursor: pointer;
     }
-    .footer {
-      margin-top: auto;
-      padding: 20px;
-      font-size: 0.85rem;
-      color: #718096;
+    .contact button:hover {
+      background: #00b4d8;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #eaeaea;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <h1>Ryan's Interactive Resume Chatbot</h1>
-  <p>
-    Welcome! Use the chat in the bottom-right corner to explore Ryan’s professional experience.
-  </p>
+  <!-- Hero -->
+  <header>
+    <h1>Ryan Hillman</h1>
+    <p>Cloud Developer | Application Engineer | Consultant</p>
+    <div class="buttons">
+      <a href="#">View Resume</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </header>
 
-  <div class="buttons">
-    <a href="https://www.linkedin.com/in/ryan-h-7614a2128/" target="_blank">View LinkedIn</a>
-    <a href="https://storage.googleapis.com/ryan-resume-bucket/resume.pdf" target="_blank">View Resume (PDF)</a>
-  </div>
+  <!-- Chatbot -->
+  <section class="chatbot">
+    <h2>Chat with Ryan’s Assistant</h2>
+    <p>[Dialogflow chatbot widget here]</p>
+  </section>
 
-  <!-- Contact Form -->
-  <form id="contact-form" action="https://formspree.io/f/xldpwjdz" method="POST">
+  <!-- Contact -->
+  <section class="contact">
     <h2>Contact Ryan</h2>
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="_replyto" placeholder="Your email" required>
-    <textarea name="message" placeholder="Your message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
 
-  <!-- Thank You Message -->
-  <div id="thank-you">✅ Thank you! Your message has been sent.</div>
-
-  <!-- Dialogflow Messenger -->
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-  <df-messenger
-    intent="WELCOME"
-    chat-title="Ryan's-Assistant"
-    agent-id="c893a66a-9095-4674-b773-8040a39b4cc7"
-    language-code="en"
-  ></df-messenger>
-
-  <div class="footer">Built with Google Cloud Dialogflow</div>
-
-  <script>
-    // Thank-you handling
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.style.display = 'none';
-        document.getElementById('thank-you').style.display = 'block';
-      } else {
-        alert("Oops! There was a problem sending your message.");
-      }
-    });
-  </script>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Ryan Hillman | All rights reserved.</p>
+  </footer>
 </body>
 </html>
+
