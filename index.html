@@ -41,9 +41,16 @@
       background: #0072ff;
       color: white;
     }
+
+    /* Shaded section for contact form */
+    .contact-section {
+      background: #eef3f9; /* light shade */
+      padding: 60px 20px;
+    }
+
     .card {
       background: white;
-      margin: 30px auto;
+      margin: 0 auto;
       padding: 25px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -82,7 +89,6 @@
       padding: 20px;
       background: linear-gradient(90deg, #0072ff, #00c6ff);
       color: white;
-      margin-top: 40px;
     }
   </style>
 </head>
@@ -95,20 +101,22 @@
     <a class="btn" href="https://github.com/ryanhillman" target="_blank">GitHub</a>
   </header>
 
-  <!-- Contact Form Card -->
-  <div class="card">
-    <h2>Contact Ryan</h2>
-    <form action="https://formspree.io/f/your-form-id" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
+  <!-- Contact Form Section with shaded background -->
+  <section class="contact-section">
+    <div class="card">
+      <h2>Contact Ryan</h2>
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
-    <p>Always learning. Always building. © 2025</p>
+    <p>Keep building. © 2025 Ryan Hillman</p>
   </footer>
 
   <!-- Dialogflow Messenger Script -->
@@ -121,4 +129,3 @@
   </df-messenger>
 </body>
 </html>
-
