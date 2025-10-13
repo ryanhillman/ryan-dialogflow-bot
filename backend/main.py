@@ -19,6 +19,7 @@ def webhook():
     intent = (req.get("queryResult", {}).get("intent", {}) or {}).get("displayName", "")
     data = load_resume()
 
+    # EXPERIENCE
     if intent == "Experience":
         exps = data.get("experience", [])
         if not exps:
@@ -34,7 +35,7 @@ def webhook():
                 lines.append(f"- {role} at {company}")
         return jsonify({"fulfillmentText": "\n".join(lines)})
 
-    # ACCENTURE overview
+    # ACCENTURE overview 
     if intent == "Accenture":
         return jsonify({"fulfillmentText":
             "Ryan held two roles while at Accenture\n\n"
@@ -43,7 +44,7 @@ def webhook():
             "- Would you like to hear more about either?"
         })
 
-    # NYCERS details
+    # NYCERS details 
     if intent in ["NYCERS Details", "Java Application Development Details", "New York City Employee Retirement System Details"]:
         accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
         bullets = accenture.get("details", {}).get("Java Application Development", [])
@@ -61,10 +62,10 @@ def webhook():
         text = "Pegasystems Support and Development for Bank of America\n\n" + "\n".join(f"- {b}" for b in bullets)
         return jsonify({"fulfillmentText": text})
 
-    # SKILLS overview
+    # SKILLS overview (guide to subcategories)
     if intent == "Skills":
         return jsonify({"fulfillmentText":
-            "Ryan has experience with Programming Languages, Frameworks, Platforms, and Tools. Which would you like to know more about?"
+            "Ryan has experience with Programming Languages, Frameworks, Platforms, and Databases. Which would you like to know more about?"
         })
 
     # SKILLS sub-intents
@@ -86,13 +87,13 @@ def webhook():
             return jsonify({"fulfillmentText": "No platforms found."})
         return jsonify({"fulfillmentText": "Ryan has worked with\n\n" + "\n".join(f"- {x}" for x in items)})
 
-    if intent == "Tools":
-        items = (data.get("skills", {}).get("Tools") or [])
+    if intent == "Databases":
+        items = (data.get("skills", {}).get("Databases") or [])
         if not items:
-            return jsonify({"fulfillmentText": "No tools found."})
+            return jsonify({"fulfillmentText": "No databases found."})
         return jsonify({"fulfillmentText": "Ryan is familiar with\n\n" + "\n".join(f"- {x}" for x in items)})
 
-    # EDUCATION 
+    # EDUCATION
     if intent == "Education":
         edu = data.get("education", {})
         school = edu.get("school", "")
@@ -101,14 +102,14 @@ def webhook():
         text = f"Ryan earned his degree at {school}. It was a {degree}. He graduated in {grad}."
         return jsonify({"fulfillmentText": text})
 
-    # CERTIFICATIONS
+    # CERTIFICATIONS 
     if intent == "Certifications":
         certs = data.get("certifications", [])
         if not certs:
             return jsonify({"fulfillmentText": "No certifications found."})
         return jsonify({"fulfillmentText": "Ryan holds the following certifications\n\n" + "\n".join(f"- {c}" for c in certs)})
 
-    # AWARDS
+    # AWARDS 
     if intent == "Awards":
         awards = data.get("awards", [])
         # allow either array of strings or array of {title, description}
@@ -134,4 +135,3 @@ def webhook():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
-
