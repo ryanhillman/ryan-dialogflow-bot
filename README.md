@@ -39,7 +39,7 @@ This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud R
 2. Dialogflow routes the intent to a webhook hosted on Cloud Run.  
 3. The webhook retrieves structured data from `resume.json` in Cloud Storage.  
 4. The bot responds with relevant details (skills, experience, etc.).  
-5. Users can also view/download my resume or contact me directly via the form.  
+5. Users can view my resume, LinkedIn, GitHub, or contact me directly via the form.  
 
 ---
 
