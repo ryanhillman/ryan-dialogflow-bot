@@ -50,9 +50,9 @@
   ],
   "skills": {
     "Languages": ["Java", "Python", "JavaScript", "SQL", "R"],
-    "Frameworks": ["Vue.js", "Flask", "Dialogflow", "Spring Boot"],
+    "Frameworks": ["Vue.js", "Flask", "Spring Boot"],
     "Platforms": ["Google Cloud", "Microsoft Azure", "AWS", "Pegasystems"],
-    "Tools": ["Git/GitHub", "PostgreSQL", "Auth0", "Tableau", "Airtable"]
+    "Databases": ["PostgreSQL", "Airtable"]
   },
   "education": {
     "school": "The University of North Carolina at Charlotte",
@@ -67,4 +67,3 @@
     "Presidential Service Award - completed over 100 hours of community service within 1 year"
   ]
 }
-
