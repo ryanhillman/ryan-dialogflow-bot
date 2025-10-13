@@ -26,7 +26,7 @@ This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud R
 
 ## ⚙️ Tech Stack
 - **Frontend**: HTML5, CSS3, lightweight JavaScript  
-- **Chatbot**: Google Dialogflow ES (free edition)  
+- **Chatbot**: Google Dialogflow ES
 - **Backend**: Google Cloud Run (Flask webhook service)  
 - **Storage**: Google Cloud Storage (resume.json + resume.pdf)  
 - **Deployment**: GitHub Pages for static site hosting  
