@@ -5,7 +5,7 @@ This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud R
 
 **Live Demo:** [Visit Chatbot Website](https://ryanhillman.github.io/ryan-dialogflow-bot/) 
 
-**Simplified Resume (PDF):** [Download Resume](https://storage.googleapis.com/ryan-resume-bucket/resume.pdf)  
+**Resume (PDF):** [Download Resume](https://storage.googleapis.com/ryan-resume-bucket/resume.pdf)  
 
 **LinkedIn:** [Ryan Hillman](https://www.linkedin.com/in/ryan-h-7614a2128/)
 
