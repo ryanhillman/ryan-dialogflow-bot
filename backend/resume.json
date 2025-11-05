@@ -5,12 +5,12 @@
       "role": "Consultant",
       "years": "September 2021 - October 2025",
       "details": {
-        "Java Application Development": [
+        "Java Application Developer": [
           "Designed full-stack integration solutions to enable cross-application functionality",
           "Evaluated workloads for optimal cloud migration paths to IaaS or PaaS platforms",
           "Upgraded software to ensure compliance with architecture assurance requirements"
         ],
-        "Pegasystems Support and Development": [
+        "Pegasystems Support": [
           "Implemented Generative AI to automate recovery processes",
           "Diagnosed simple to complex issues as second-level support resource",
           "Collaborated in scrum meetings to discuss objectives and process resolution updates"
@@ -50,13 +50,14 @@
   ],
   "skills": {
     "Languages": ["Java", "Python", "JavaScript", "SQL", "R"],
-    "Frameworks": ["Vue.js", "Flask", "Spring Boot"],
-    "Platforms": ["Google Cloud", "Microsoft Azure", "AWS", "Pegasystems"],
-    "Databases": ["PostgreSQL", "Airtable"]
+    "Frameworks": ["Spring Boot", "Flask", "Vue.js"],
+    "Platforms": ["AWS", "Microsoft Azure", "Google Cloud", "Pegasystems"],
+    "Databases": ["PostgreSQL", "Airtable"],
+    "DevOps": ["CI/CD", "Docker", "GitHub Actions", "YAML", "CLI Automation"]
   },
   "education": {
     "school": "The University of North Carolina at Charlotte",
-    "degree": "Bachelor of Science in Computer Science - Software, Systems & Networks (Business Option)",
+    "degree": "Bachelor of Science in Computer Science - Software, Systems & Networks",
     "graduation": "August 2021"
   },
   "certifications": [
@@ -67,6 +68,3 @@
     "Presidential Service Award - completed over 100 hours of community service within 1 year"
   ]
 }
-
-
-

@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 RESUME_URL = "https://storage.googleapis.com/ryan-resume-bucket/resume.json"
 
+
 def load_resume():
     try:
         r = requests.get(RESUME_URL, timeout=5)
@@ -12,6 +13,7 @@ def load_resume():
         return r.json()
     except Exception:
         return {}
+
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
@@ -24,10 +26,7 @@ def webhook():
         exps = data.get("experience", [])
         if not exps:
             return jsonify({"fulfillmentText": "No experience data found."})
-        lines = [
-            "Here is Ryan's professional experience",
-            "",
-        ]
+        lines = ["Here is Ryan's professional experience", ""]
         for job in exps:
             role = job.get("role", "")
             company = job.get("company", "")
@@ -35,63 +34,73 @@ def webhook():
                 lines.append(f"- {role} at {company}")
         return jsonify({"fulfillmentText": "\n".join(lines)})
 
-    # ACCENTURE overview 
+    # ACCENTURE overview
     if intent == "Accenture":
-        return jsonify({"fulfillmentText":
-            "Ryan held two roles while at Accenture\n\n"
-            "- Java Application Development with NYCERS (New York City Employees Retirement System)\n"
-            "- Pegasystems Support and Development with BoA (Bank of America)\n\n"
-            "- Would you like to hear more about either?"
+        return jsonify({
+            "fulfillmentText":
+                "Ryan held two roles while at Accenture\n\n"
+                "- Java Application Developer with NYCERS (New York City Employees Retirement System)\n"
+                "- Pegasystems Support with Bank of America (BoA)\n\n"
+                "- Would you like to hear more about either?"
         })
 
-    # NYCERS details 
-    if intent in ["NYCERS Details", "Java Application Development Details", "New York City Employee Retirement System Details"]:
+    # NYCERS details
+    if intent in ["NYCERS Details", "Java Application Developer Details", "New York City Employee Retirement System Details"]:
         accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
-        bullets = accenture.get("details", {}).get("Java Application Development", [])
+        bullets = accenture.get("details", {}).get("Java Application Developer", [])
         if not bullets:
             return jsonify({"fulfillmentText": "No NYCERS details found."})
         text = "Java Application Developer for NYCERS\n\n" + "\n".join(f"- {b}" for b in bullets)
         return jsonify({"fulfillmentText": text})
 
     # BoA / Pegasystems details
-    if intent in ["BoA Details", "Bank of America Details", "Pegasystems Support and Development Details"]:
+    if intent in ["BoA Details", "Bank of America Details", "Pegasystems Support Details"]:
         accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
-        bullets = accenture.get("details", {}).get("Pegasystems Support and Development", [])
+        bullets = accenture.get("details", {}).get("Pegasystems Support", [])
         if not bullets:
             return jsonify({"fulfillmentText": "No Bank of America details found."})
-        text = "Pegasystems Support and Development for Bank of America\n\n" + "\n".join(f"- {b}" for b in bullets)
+        text = "Pegasystems Support for Bank of America\n\n" + "\n".join(f"- {b}" for b in bullets)
         return jsonify({"fulfillmentText": text})
 
-    # SKILLS overview (guide to subcategories)
+    # SKILLS overview
     if intent == "Skills":
-        return jsonify({"fulfillmentText":
-            "Ryan has experience with Programming Languages, Frameworks, Platforms, and Databases. Which would you like to know more about?"
+        return jsonify({
+            "fulfillmentText":
+                "Ryan has experience with Programming Languages, Frameworks, Platforms, Databases, and DevOps. "
+                "Which would you like to know more about?"
         })
 
     # SKILLS sub-intents
     if intent == "Languages":
-        items = (data.get("skills", {}).get("Languages") or [])
+        items = data.get("skills", {}).get("Languages", [])
         if not items:
             return jsonify({"fulfillmentText": "No languages found."})
         return jsonify({"fulfillmentText": "Ryan is skilled in\n\n" + "\n".join(f"- {x}" for x in items)})
 
     if intent == "Frameworks":
-        items = (data.get("skills", {}).get("Frameworks") or [])
+        items = data.get("skills", {}).get("Frameworks", [])
         if not items:
             return jsonify({"fulfillmentText": "No frameworks found."})
         return jsonify({"fulfillmentText": "Ryan has experience with\n\n" + "\n".join(f"- {x}" for x in items)})
 
     if intent == "Platforms":
-        items = (data.get("skills", {}).get("Platforms") or [])
+        items = data.get("skills", {}).get("Platforms", [])
         if not items:
             return jsonify({"fulfillmentText": "No platforms found."})
         return jsonify({"fulfillmentText": "Ryan has worked with\n\n" + "\n".join(f"- {x}" for x in items)})
 
     if intent == "Databases":
-        items = (data.get("skills", {}).get("Databases") or [])
+        items = data.get("skills", {}).get("Databases", [])
         if not items:
             return jsonify({"fulfillmentText": "No databases found."})
         return jsonify({"fulfillmentText": "Ryan is familiar with\n\n" + "\n".join(f"- {x}" for x in items)})
+
+    # DEVOPS
+    if intent == "DevOps":
+        items = data.get("skills", {}).get("DevOps", [])
+        if not items:
+            return jsonify({"fulfillmentText": "No DevOps skills found."})
+        return jsonify({"fulfillmentText": "Ryan has DevOps experience with\n\n" + "\n".join(f"- {x}" for x in items)})
 
     # EDUCATION
     if intent == "Education":
@@ -102,17 +111,16 @@ def webhook():
         text = f"Ryan earned his degree at {school}. It was a {degree}. He graduated in {grad}."
         return jsonify({"fulfillmentText": text})
 
-    # CERTIFICATIONS 
+    # CERTIFICATIONS
     if intent == "Certifications":
         certs = data.get("certifications", [])
         if not certs:
             return jsonify({"fulfillmentText": "No certifications found."})
         return jsonify({"fulfillmentText": "Ryan holds the following certifications\n\n" + "\n".join(f"- {c}" for c in certs)})
 
-    # AWARDS 
+    # AWARDS
     if intent == "Awards":
         awards = data.get("awards", [])
-        # allow either array of strings or array of {title, description}
         if isinstance(awards, list) and awards and isinstance(awards[0], dict):
             formatted = []
             for a in awards:
@@ -124,14 +132,26 @@ def webhook():
                     formatted.append(f"- {title}")
                 elif desc:
                     formatted.append(f"- {desc}")
-            return jsonify({"fulfillmentText": "Ryan has received the following awards\n\n" + "\n".join(formatted) if formatted else "No awards found."})
+            return jsonify({
+                "fulfillmentText":
+                    "Ryan has received the following awards\n\n" + "\n".join(formatted)
+                    if formatted else "No awards found."
+            })
         elif isinstance(awards, list):
-            return jsonify({"fulfillmentText": "Ryan has received the following awards\n\n" + "\n".join(f"- {a}" for a in awards) if awards else "No awards found."})
+            return jsonify({
+                "fulfillmentText":
+                    "Ryan has received the following awards\n\n" + "\n".join(f"- {a}" for a in awards)
+                    if awards else "No awards found."
+            })
         else:
             return jsonify({"fulfillmentText": "No awards found."})
 
-    # Fallback
-    return jsonify({"fulfillmentText": "I can help with Ryan's experience, skills, education, certifications, and awards. Please ask about one!"})
+    # FALLBACK
+    return jsonify({
+        "fulfillmentText":
+            "I can help with Ryan's experience, skills, education, certifications, and awards. Please ask about one!"
+    })
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
