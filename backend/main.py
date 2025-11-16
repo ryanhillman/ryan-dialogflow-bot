@@ -78,9 +78,9 @@ def webhook():
         return jsonify({"fulfillmentText": "Ryan is skilled in\n\n" + "\n".join(f"- {x}" for x in items)})
 
     if intent == "Frameworks":
-        items = data.get("skills", {}).get("Frameworks", [])
+        items = data.get("skills", {}).get("Frameworks & Libraries", [])
         if not items:
-            return jsonify({"fulfillmentText": "No frameworks found."})
+            return jsonify({"fulfillmentText": "No frameworks or libraries found."})
         return jsonify({"fulfillmentText": "Ryan has experience with\n\n" + "\n".join(f"- {x}" for x in items)})
 
     if intent == "Platforms":
