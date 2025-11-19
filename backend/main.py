@@ -66,7 +66,7 @@ def webhook():
     if intent == "Skills":
         return jsonify({
             "fulfillmentText":
-                "Ryan has experience with Programming Languages, Frameworks, Platforms, Databases, and DevOps. "
+                "Ryan has experience with Programming Languages, Frameworks/Libraries, Platforms, Databases, and DevOps. "
                 "Which would you like to know more about?"
         })
 
