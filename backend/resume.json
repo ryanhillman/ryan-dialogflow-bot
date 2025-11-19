@@ -50,7 +50,7 @@
   ],
   "skills": {
     "Languages": ["Java", "Python", "JavaScript", "SQL", "R"],
-    "Frameworks & Libraries": ["Spring Boot", "Flask", "Vue.js", "Pandas", "JUnit"],
+    "Frameworks & Libraries": ["Spring Boot", "Angular", "Flask", "Vue.js", "Pandas", "JUnit"],
     "Platforms": ["AWS", "Microsoft Azure", "Google Cloud", "Pegasystems"],
     "Databases": ["PostgreSQL", "Airtable"],
     "DevOps": ["CI/CD", "Terraform", "Docker", "GitHub Actions", "CLI Automation"]
