@@ -1,4 +1,10 @@
-# 🤖 Ryan's Interactive Resume Chatbot
+<p align="center">
+  <img src="https://img.shields.io/badge/Project-AI%20Chatbot-black" />
+  <img src="https://img.shields.io/badge/NLP-Dialogflow-FF9800?logo=dialogflow&logoColor=white" />
+  <img src="https://img.shields.io/badge/Deployed%20On-Google%20Cloud-4285F4?logo=google-cloud&logoColor=white" />
+</p>
+
+# Ryan's Interactive Resume Chatbot
 
 Welcome to my interactive resume project!  
 This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud Run**, and **GitHub Pages** to create a chatbot that allows visitors to explore my professional background in a conversational way.
@@ -11,12 +17,12 @@ This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud R
 
 ---
 
-## 📷 Screenshot
+## Screenshot
 ![App Screenshot](./screenshot.png)
 
 ---
 
-## 💡 Features
+## Features
 - **Dialogflow ES Chatbot**: Handles intents like skills, programming languages, experience, certifications, education, and awards.  
 - **Custom Webhook (Python/Flask on Cloud Run)**: Dynamically pulls information from my structured resume JSON stored in Google Cloud Storage.  
 - **Website Integration**: Chatbot embedded directly on the site using Dialogflow Messenger.  
@@ -24,7 +30,7 @@ This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud R
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 - **Frontend**: HTML5, CSS3, lightweight JavaScript  
 - **Chatbot**: Google Dialogflow ES
 - **Backend**: Google Cloud Run (Flask webhook service)  
@@ -34,7 +40,7 @@ This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud R
 
 ---
 
-## 🚀 How It Works
+## How It Works
 1. A user asks a question in the embedded Dialogflow Messenger widget.  
 2. Dialogflow routes the intent to a webhook hosted on Cloud Run.  
 3. The webhook retrieves structured data from `resume.json` in Cloud Storage.  
@@ -43,7 +49,7 @@ This site demonstrates how I’ve used **Google Cloud Dialogflow ES**, **Cloud R
 
 ---
 
-## 📌 Why This Project?
+## Why This Project?
 This project showcases my ability to:
 - Build and deploy cloud-based conversational AI solutions.  
 - Integrate multiple Google Cloud services into a seamless system.  
@@ -51,6 +57,6 @@ This project showcases my ability to:
 
 ---
 
-## 📬 Contact
+## Contact
 If you’d like to connect, feel free to reach out via the contact form on the site or through my LinkedIn.
 
