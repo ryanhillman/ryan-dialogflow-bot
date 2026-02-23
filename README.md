@@ -1,7 +1,8 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/Project-AI%20Chatbot-black" />
-  <img src="https://img.shields.io/badge/NLP-Dialogflow-FF9800?logo=dialogflow&logoColor=white" />
-  <img src="https://img.shields.io/badge/Deployed%20On-Google%20Cloud-4285F4?logo=google-cloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/Chatbot-Dialogflow%20ES-FF9800?logo=dialogflow&logoColor=white" />
+  <img src="https://img.shields.io/badge/Deploy-Cloud%20Run-4285F4?logo=google-cloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/Storage-Cloud%20Storage-4285F4?logo=google-cloud&logoColor=white" />
+  <img src="https://img.shields.io/badge/Site-GitHub%20Pages-222222?logo=github&logoColor=white" />
 </p>
 
 # Ryan's Interactive Resume Chatbot
