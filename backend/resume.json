@@ -5,64 +5,65 @@
       "role": "Consultant",
       "years": "September 2021 - October 2025",
       "details": {
-        "Java Application Developer": [
-          "Designed full-stack integration solutions to enable cross-application functionality",
-          "Evaluated workloads for optimal cloud migration paths to IaaS or PaaS platforms",
-          "Upgraded software to ensure compliance with architecture assurance requirements"
+        "Cloud Application Developer - New York City Employees Retirement System (NYCERS)": [
+          "Designed Java microservice solutions to transition legacy systems towards the cloud",
+          "Executed IaaS and PaaS migration paths to improve scalability and cost efficiency",
+          "Strengthened system security and resilience through architecture assurance and compliance enhancements",
+          "Utilized Simflofy with JavaScript tasks to convert PDF records into XFDF and RDF data files"
         ],
-        "Pegasystems Support": [
-          "Implemented Generative AI to automate recovery processes",
-          "Diagnosed simple to complex issues as second-level support resource",
-          "Collaborated in scrum meetings to discuss objectives and process resolution updates"
+        "Pegasystems Support - Bank of America": [
+          "Implemented Generative AI to automate system recovery processes",
+          "Diagnosed complex issues as second-level support resource",
+          "Collaborated with engineers to discuss objectives and process resolution updates"
         ]
       }
     },
     {
       "company": "Freshpire Inc",
-      "role": "Technology Consultant",
+      "role": "Data Migration",
       "years": "December 2020 - January 2021",
       "details": [
-        "Analyzed monthly delivery budgets for patterns or discrepancies",
-        "Connected local farms to food distribution companies for increased market visibility",
-        "Processed data records to transition towards an advantageous online system"
+        "Architected data infrastructure using Airtable workflows to create a centralized online platform for local farms",
+        "Partnered directly with the founder to enhance visibility and efficiency across the agricultural supply chain"
       ]
     },
     {
       "company": "CliftonLarsonAllen LLP",
-      "role": "Tax Accounting Intern",
-      "years": "December 2016 - April 2017",
+      "role": "Tax Accounting Internship",
+      "years": "Dec 2016 - April 2017",
       "details": [
         "Prepared 1040, 1120, and state property tax returns for individual clients and small businesses",
-        "Provided customer support and answered questions about federal, state, and local governance",
-        "Aided with collecting and uploading financial forms from clients"
+        "Collected and uploaded client financial documents to streamline data processing",
+        "Met with clients to clarify tax documentation, explain deductions, and resolve filing-related inquiries"
       ]
     },
     {
       "company": "CPI Security",
-      "role": "Inventory Intern",
+      "role": "Inventory Internship",
       "years": "May 2016 - September 2016",
       "details": [
-        "Assisted with keeping weekly inventory and reporting totals to management",
-        "Tested parts for defects and arranged returns to manufacturers",
-        "Distributed security system parts to service employees based on daily needs"
+        "Maintained weekly inventory records, reporting part usage and restock needs to ensure uninterrupted field operations",
+        "Tested incoming components for defects to coordinate manufacturer returns, preserving product quality",
+        "Distributed security system parts to service technicians based on daily schedules"
       ]
     }
   ],
   "skills": {
     "Languages": ["Java", "Python", "JavaScript", "SQL", "R"],
-    "Frameworks & Libraries": ["Spring Boot", "Angular", "Flask", "Vue.js", "Pandas", "JUnit"],
-    "Platforms": ["AWS", "Microsoft Azure", "Google Cloud", "Pegasystems"],
-    "Databases": ["PostgreSQL", "Airtable"],
-    "DevOps": ["CI/CD", "Terraform", "Docker", "GitHub Actions", "CLI Automation"]
+    "Frameworks & Libraries": ["Spring Boot", "Angular", "React", "FastAPI", "Flask", "Vue", "Pandas", "JUnit"],
+    "Platforms": ["AWS", "Microsoft Azure", "Google Cloud", "Pegasystems", "LangFlow"],
+    "DevOps": ["CI/CD", "Terraform", "Docker", "Kubernetes", "Kustomize", "Caddy"],
+    "Databases": ["PostgreSQL", "Airtable", "Redis"]
   },
   "education": {
     "school": "The University of North Carolina at Charlotte",
-    "degree": "Bachelor of Science in Computer Science - Software, Systems & Networks",
+    "degree": "Bachelor of Science in Computer Science - Software, Systems, & Networks concentration",
     "graduation": "August 2021"
   },
   "certifications": [
-    "AWS Certified Cloud Practitioner",
-    "Microsoft Certified: Azure Fundamentals"
+    "Amazon Web Services Certified Cloud Practitioner - August 2023",
+    "Microsoft Certified: Azure Fundamentals - September 2025",
+    "Google Cloud Digital Leader - December 2025"
   ],
   "awards": [
     "Presidential Service Award - completed over 100 hours of community service within 1 year"

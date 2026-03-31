@@ -39,24 +39,28 @@ def webhook():
         return jsonify({
             "fulfillmentText":
                 "Ryan held two roles while at Accenture\n\n"
-                "- Java Application Developer with NYCERS (New York City Employees Retirement System)\n"
+                "- Cloud Application Developer with NYCERS (New York City Employees Retirement System)\n"
                 "- Pegasystems Support with Bank of America (BoA)\n\n"
                 "- Would you like to hear more about either?"
         })
 
     # NYCERS details
-    if intent in ["NYCERS Details", "Java Application Developer Details", "New York City Employee Retirement System Details"]:
+    if intent in ["NYCERS Details", "Cloud Application Developer Details", "New York City Employee Retirement System Details"]:
         accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
-        bullets = accenture.get("details", {}).get("Java Application Developer", [])
+        bullets = accenture.get("details", {}).get(
+            "Cloud Application Developer - New York City Employees Retirement System (NYCERS)", []
+        )
         if not bullets:
             return jsonify({"fulfillmentText": "No NYCERS details found."})
-        text = "Java Application Developer for NYCERS\n\n" + "\n".join(f"- {b}" for b in bullets)
+        text = "Cloud Application Developer for NYCERS\n\n" + "\n".join(f"- {b}" for b in bullets)
         return jsonify({"fulfillmentText": text})
 
     # BoA / Pegasystems details
     if intent in ["BoA Details", "Bank of America Details", "Pegasystems Support Details"]:
         accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
-        bullets = accenture.get("details", {}).get("Pegasystems Support", [])
+        bullets = accenture.get("details", {}).get(
+            "Pegasystems Support - Bank of America", []
+        )
         if not bullets:
             return jsonify({"fulfillmentText": "No Bank of America details found."})
         text = "Pegasystems Support for Bank of America\n\n" + "\n".join(f"- {b}" for b in bullets)
