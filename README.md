@@ -1,9 +1,9 @@
-# Ryan's Interactive Resume Chatbot
+# Resume Chatbot
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Platform-Google%20Cloud-4285F4?logo=google-cloud&logoColor=white" />
   <img src="https://img.shields.io/badge/Chatbot-Dialogflow%20ES-FF9800?logo=dialogflow&logoColor=white" />
   <img src="https://img.shields.io/badge/Deploy-Cloud%20Run-4285F4?logo=google-cloud&logoColor=white" />
-  <img src="https://img.shields.io/badge/Storage-Cloud%20Storage-4285F4?logo=google-cloud&logoColor=white" />
 </p>
 
 Welcome to my interactive resume project!  
