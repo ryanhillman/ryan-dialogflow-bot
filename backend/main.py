@@ -15,6 +15,19 @@ def load_resume():
         return {}
 
 
+def format_experience(job):
+    role = job.get("role", "")
+    company = job.get("company", "")
+    details = job.get("details", [])
+
+    text = f"{role} for {company}"
+
+    if isinstance(details, list) and details:
+        text += "\n\n" + "\n".join(f"- {b}" for b in details)
+
+    return text
+
+
 @app.route("/webhook", methods=["POST"])
 def webhook():
     req = request.get_json(silent=True, force=True)
@@ -44,7 +57,7 @@ def webhook():
                 "- Would you like to hear more about either?"
         })
 
-    # NYCERS details
+    # NYCERS
     if intent in ["NYCERS Details", "Cloud Application Developer Details", "New York City Employee Retirement System Details"]:
         accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
         bullets = accenture.get("details", {}).get(
@@ -55,7 +68,7 @@ def webhook():
         text = "Cloud Application Developer for NYCERS\n\n" + "\n".join(f"- {b}" for b in bullets)
         return jsonify({"fulfillmentText": text})
 
-    # BoA / Pegasystems details
+    # BANK OF AMERICA / PEGASYSTEMS
     if intent in ["BoA Details", "Bank of America Details", "Pegasystems Support Details"]:
         accenture = next((x for x in data.get("experience", []) if x.get("company") == "Accenture"), {})
         bullets = accenture.get("details", {}).get(
@@ -65,6 +78,27 @@ def webhook():
             return jsonify({"fulfillmentText": "No Bank of America details found."})
         text = "Pegasystems Support for Bank of America\n\n" + "\n".join(f"- {b}" for b in bullets)
         return jsonify({"fulfillmentText": text})
+
+    # FRESHPIRE
+    if intent in ["Freshpire", "Freshpire Details", "Data Migration Details"]:
+        job = next((x for x in data.get("experience", []) if x.get("company") == "Freshpire Inc"), {})
+        if not job:
+            return jsonify({"fulfillmentText": "No Freshpire details found."})
+        return jsonify({"fulfillmentText": format_experience(job)})
+
+    # CLIFTON LARSON ALLEN
+    if intent in ["CliftonLarsonAllen", "CliftonLarsonAllen Details", "CLA Details", "Tax Accounting Internship"]:
+        job = next((x for x in data.get("experience", []) if x.get("company") == "CliftonLarsonAllen LLP"), {})
+        if not job:
+            return jsonify({"fulfillmentText": "No CliftonLarsonAllen details found."})
+        return jsonify({"fulfillmentText": format_experience(job)})
+
+    # CPI SECURITY
+    if intent in ["CPI Security", "CPI Security Details", "Inventory Internship"]:
+        job = next((x for x in data.get("experience", []) if x.get("company") == "CPI Security"), {})
+        if not job:
+            return jsonify({"fulfillmentText": "No CPI Security details found."})
+        return jsonify({"fulfillmentText": format_experience(job)})
 
     # SKILLS overview
     if intent == "Skills":
@@ -125,30 +159,12 @@ def webhook():
     # AWARDS
     if intent == "Awards":
         awards = data.get("awards", [])
-        if isinstance(awards, list) and awards and isinstance(awards[0], dict):
-            formatted = []
-            for a in awards:
-                title = a.get("title", "")
-                desc = a.get("description", "")
-                if title and desc:
-                    formatted.append(f"- {title} - {desc}")
-                elif title:
-                    formatted.append(f"- {title}")
-                elif desc:
-                    formatted.append(f"- {desc}")
-            return jsonify({
-                "fulfillmentText":
-                    "Ryan has received the following awards\n\n" + "\n".join(formatted)
-                    if formatted else "No awards found."
-            })
-        elif isinstance(awards, list):
+        if isinstance(awards, list):
             return jsonify({
                 "fulfillmentText":
                     "Ryan has received the following awards\n\n" + "\n".join(f"- {a}" for a in awards)
                     if awards else "No awards found."
             })
-        else:
-            return jsonify({"fulfillmentText": "No awards found."})
 
     # FALLBACK
     return jsonify({
